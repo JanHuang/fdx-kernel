@@ -12,6 +12,11 @@ namespace Fdx\Server;
 
 use FastD\Swoole\Server\Server;
 
+/**
+ * Class FdxServer
+ *
+ * @package Fdx\Server
+ */
 abstract class FdxServer extends Server
 {
 }

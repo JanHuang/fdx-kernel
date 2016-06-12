@@ -15,12 +15,13 @@
 namespace Fdx;
 
 use Composer\Autoload\ClassLoader;
-use FastD\Console\ArgvInput;
-use FastD\Console\Environment\Application;
+use FastD\Console\Console;
 use Fdx\Commands\FdxCommand;
+use FastD\Console\Input\ArgvInput;
 
 /**
- * Class Server
+ * Class Fdx
+ *
  * @package Fdx
  */
 class Fdx
@@ -70,9 +71,9 @@ class Fdx
     {
         $input = new ArgvInput();
 
-        $consoleApp = new Application();
+        $consoleApp = new Console();
 
-        $consoleApp->setCommand(new FdxCommand($config));
+        $consoleApp->addCommand(new FdxCommand($config));
 
         return $consoleApp->run($input);
     }

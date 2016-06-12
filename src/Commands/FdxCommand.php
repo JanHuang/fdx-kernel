@@ -1,24 +1,25 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: janhuang
- * Date: 16/6/1
- * Time: 上午1:12
- * Github: https://www.github.com/janhuang
- * Coding: https://www.coding.net/janhuang
- * Blog: http://segmentfault.com/blog/janhuang
+ *
+ * @author    jan huang <bboyjanhuang@gmail.com>
+ * @copyright 2016
+ *
+ * @link      https://www.github.com/janhuang
+ * @link      http://www.fast-d.cn/
  */
 
 namespace Fdx\Commands;
 
 use FastD\Console\Command\Command;
-use FastD\Console\IO\Input;
-use FastD\Console\IO\Output;
+use FastD\Console\Input\Input;
+use FastD\Console\Input\InputOption;
+use FastD\Console\Output\Output;
 use FastD\Swoole\Server\Server;
 use FastD\Swoole\Console\Service;
 
 /**
- * Class Fdx
+ * Class FdxCommand
+ *
  * @package Fdx\Commands
  */
 class FdxCommand extends Command
@@ -52,8 +53,13 @@ class FdxCommand extends Command
     {
         $this
             ->setArgument('action')
-            ->setOption('daemonize', Input::ARG_NONE)
+            ->setOption('daemonize', '-d', InputOption::VALUE_NONE, '守护进程')
         ;
+    }
+
+    public function getDescription()
+    {
+        return "\t<info>fdx 命令 --help 查询操作</info>";
     }
 
     /**
@@ -65,7 +71,7 @@ class FdxCommand extends Command
     {
         $server = $this->handle($this->config);
 
-        $action = $input->get('action') ?? 'status';
+        $action = $input->getOption('action') ?? 'status';
 
         switch ($action) {
             case 'start':
