@@ -76,10 +76,7 @@ class FdxCommand extends Command
 
         $action = $input->getOption('action') ?? 'status';
 
-        if ($input->hasOption(['daemonize', 'd'])) {
-            $server->daemonize();
-        }
-
+        
         $service = Service::server($server);
         
         switch ($action) {
@@ -113,7 +110,7 @@ class FdxCommand extends Command
     {
         $server = $config['server'];
 
-        if (empty($server) || !class_exists($server) || !($server instanceof Server)) {
+        if (empty($server) || !class_exists($server)) {
             throw new \RuntimeException(sprintf('Cannot setting server. And you must be to extends "%s"', Server::class));
         }
 

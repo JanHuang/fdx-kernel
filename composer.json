@@ -24,7 +24,12 @@
         }
     },
     "autoload-dev": {
-
+        "psr-4": {
+            "Examples\\": "examples"
+        }
+    },
+    "config": {
+        "bin-dir": "bin"
     },
     "bin": [
         "server"
