@@ -40,8 +40,7 @@ $composer = include COMPOSER_INSTALL;
 /**
  * Bootstrap server.
  *
- * 
  */
-use Fdx\Server;
+use Fdx\Fdx;
 
-Server::run($composer);
+Fdx::run($composer);

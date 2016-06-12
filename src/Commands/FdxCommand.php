@@ -21,7 +21,7 @@ use FastD\Swoole\Console\Service;
  * Class Fdx
  * @package Fdx\Commands
  */
-class Fdx extends Command
+class FdxCommand extends Command
 {
     /**
      * @var array
