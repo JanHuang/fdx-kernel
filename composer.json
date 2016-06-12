@@ -1,6 +1,6 @@
 {
-    "name": "fastd/fdx",
-    "description": "Fast-D X",
+    "name": "fastd/fdx-kernel",
+    "description": "Fast-D X Kernel",
     "type": "project",
     "license": "MIT",
     "authors": [
@@ -21,14 +21,6 @@
         "psr-4": {
             "Fdx\\": "src"
         }
-    },
-    "autoload-dev": {
-        "psr-4": {
-            "": "app"
-        }
-    },
-    "config": {
-        "bin-dir": "bin"
     },
     "bin": [
         "server"
