@@ -3,7 +3,7 @@
  * Created by PhpStorm.
  * User: janhuang
  * Date: 16/5/31
- * Time: 上午10:58
+ * Time: 上午10:57
  * Github: https://www.github.com/janhuang
  * Coding: https://www.coding.net/janhuang
  * SegmentFault: http://segmentfault.com/u/janhuang
@@ -12,19 +12,19 @@
  * WebSite: http://www.janhuang.me
  */
 
-namespace Fdx\Handle;
+namespace Fdx\Server;
 
 /**
- * Interface TimerInterface
+ * Interface Http
  *
- * @package Fdx\Handle
+ * @package Fdx\Server
  */
-interface TimerInterface
+interface HttpServerInterface
 {
     /**
-     * @param \swoole_server $server
-     * @param int $interval
+     * @param \swoole_http_request $request
+     * @param \swoole_http_response $response
      * @return mixed
      */
-    public function onTimer(\swoole_server $server, int $interval);
+    public function onRequest(\swoole_http_request $request, \swoole_http_response $response);
 }

@@ -3,7 +3,7 @@
  * Created by PhpStorm.
  * User: janhuang
  * Date: 16/5/31
- * Time: 上午11:00
+ * Time: 上午10:58
  * Github: https://www.github.com/janhuang
  * Coding: https://www.coding.net/janhuang
  * SegmentFault: http://segmentfault.com/u/janhuang
@@ -12,9 +12,19 @@
  * WebSite: http://www.janhuang.me
  */
 
-namespace Fdx\Handle;
+namespace Fdx\Server;
 
-interface UdpInterface
+/**
+ * Interface TimerInterface
+ *
+ * @package Fdx\Server
+ */
+interface TimerServerInterface
 {
-    public function onPacket(\swoole_server $server, string $data, array $client_info);
+    /**
+     * @param \swoole_server $server
+     * @param int $interval
+     * @return mixed
+     */
+    public function onTimer(\swoole_server $server, int $interval);
 }

@@ -3,7 +3,7 @@
  * Created by PhpStorm.
  * User: janhuang
  * Date: 16/5/31
- * Time: 上午10:57
+ * Time: 上午11:00
  * Github: https://www.github.com/janhuang
  * Coding: https://www.coding.net/janhuang
  * SegmentFault: http://segmentfault.com/u/janhuang
@@ -12,19 +12,20 @@
  * WebSite: http://www.janhuang.me
  */
 
-namespace Fdx\Handle;
+namespace Fdx\Server;
 
 /**
- * Interface Http
+ * Interface UdpServerInterface
  *
- * @package Fdx\Handle
+ * @package Fdx\Server
  */
-interface Http
+interface UdpServerInterface
 {
     /**
-     * @param \swoole_http_request $request
-     * @param \swoole_http_response $response
+     * @param \swoole_server $server
+     * @param string $data
+     * @param array $client_info
      * @return mixed
      */
-    public function onRequest(\swoole_http_request $request, \swoole_http_response $response);
+    public function onPacket(\swoole_server $server, string $data, array $client_info);
 }

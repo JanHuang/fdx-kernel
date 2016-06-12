@@ -11,7 +11,7 @@
     ],
     "require": {
         "php": ">=7.0",
-        "fastd/swoole": "2.0.x-dev",
+        "fastd/swoole": "~2.0@beta",
         "fastd/console": "~2.0@beta"
     },
     "require-dev": {

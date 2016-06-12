@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "5788e28468c6cfe7bad83dd6e3f251e8",
-    "content-hash": "a73fa28a62e5813539e7b4df151c720c",
+    "hash": "c463346711f50f33c6aff4e2f1ad0043",
+    "content-hash": "f29034aa8c7d69dab38d5a7ab7d77d4c",
     "packages": [
         {
             "name": "fastd/console",
@@ -97,16 +97,16 @@
         },
         {
             "name": "fastd/swoole",
-            "version": "dev-master",
+            "version": "v2.0.0-beta1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/JanHuang/swoole.git",
-                "reference": "9939eb2d7436e7ed48e6dd30b2c2a855f01d9c79"
+                "reference": "9369f5816f0dd3edddcc76d1cd9d400acb9fecf2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/JanHuang/swoole/zipball/9939eb2d7436e7ed48e6dd30b2c2a855f01d9c79",
-                "reference": "9939eb2d7436e7ed48e6dd30b2c2a855f01d9c79",
+                "url": "https://api.github.com/repos/JanHuang/swoole/zipball/9369f5816f0dd3edddcc76d1cd9d400acb9fecf2",
+                "reference": "9369f5816f0dd3edddcc76d1cd9d400acb9fecf2",
                 "shasum": ""
             },
             "require": {
@@ -144,7 +144,7 @@
                 }
             ],
             "description": "FastD swoole.",
-            "time": "2016-06-03 09:05:06"
+            "time": "2016-06-10 18:59:39"
         }
     ],
     "packages-dev": [
@@ -1386,7 +1386,7 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "fastd/swoole": 20,
+        "fastd/swoole": 10,
         "fastd/console": 10
     },
     "prefer-stable": false,

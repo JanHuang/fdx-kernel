@@ -12,14 +12,14 @@
  * WebSite: http://www.janhuang.me
  */
 
-namespace Fdx\Handle;
+namespace Fdx\Server;
 
 /**
  * Interface TcpInterface
  *
- * @package Fdx\Handle
+ * @package Fdx\Server
  */
-interface TcpInterface
+interface TcpServerInterface
 {
     /**
      * @param \swoole_server $server
