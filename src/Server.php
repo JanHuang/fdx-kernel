@@ -74,7 +74,6 @@ class Server
         $consoleApp = new Application();
 
         $consoleApp->setCommand(new Fdx($config));
-        $consoleApp->setCommand(new Init());
 
         return $consoleApp->run($input);
     }

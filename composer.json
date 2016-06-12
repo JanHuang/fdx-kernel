@@ -22,6 +22,11 @@
             "Fdx\\": "src"
         }
     },
+    "autoload-dev": {
+        "files": [
+            "app/application.php"
+        ]
+    },
     "bin": [
         "server"
     ],
