@@ -16,6 +16,7 @@ namespace Fdx;
 
 use Composer\Autoload\ClassLoader;
 use FastD\Console\Console;
+use FastD\Debug\Debug;
 use Fdx\Commands\FdxCommand;
 use FastD\Console\Input\ArgvInput;
 
@@ -38,6 +39,7 @@ class Fdx
     {
         if (null === static::$instance) {
             static::$instance = new static();
+            Debug::enable();
         }
 
         return static::$instance;
