@@ -57,6 +57,9 @@ class FdxCommand extends Command
         ;
     }
 
+    /**
+     * @return string
+     */
     public function getDescription()
     {
         return "\t<info>fdx 命令 --help 查询操作</info>";
@@ -73,26 +76,32 @@ class FdxCommand extends Command
 
         $action = $input->getOption('action') ?? 'status';
 
+        if ($input->hasOption(['daemonize', 'd'])) {
+            $server->daemonize();
+        }
+
+        $service = Service::server($server);
+        
         switch ($action) {
             case 'start':
-                Service::server($server)->start();
+                $service->start();
                 break;
             case 'stop':
-                Service::server($server)->shutdown();
+                $service->shutdown();
                 break;
             case 'restart':
-                Service::server($server)->shutdown();
-                Service::server($server)->start();
+                $service->shutdown();
+                $service->start();
                 break;
             case 'reload':
-                Service::server($server)->reload();
+                $service->reload();
                 break;
             case 'watch':
-                Service::server($server)->watch();
+                $service->watch();
                 break;
             case 'status':
             default:
-                Service::server($server)->status();
+                $service->status();
         }
     }
 
@@ -102,11 +111,21 @@ class FdxCommand extends Command
      */
     protected function handle(array $config)
     {
-        $handle = new $config['handle']();
+        $server = $config['server'];
 
-        $server = $config['server']::create();
+        if (empty($server) || !class_exists($server) || !($server instanceof Server)) {
+            throw new \RuntimeException(sprintf('Cannot setting server. And you must be to extends "%s"', Server::class));
+        }
 
-        $server->handle($handle);
+        $server = $server::create();
+
+        $handle = $config['handle'];
+
+        if (empty($handle) || !class_exists($handle)) {
+            throw new \RuntimeException(sprintf('Cannot setting server callback handle.'));
+        }
+
+        $server->handle(new $handle);
 
         return $server;
     }

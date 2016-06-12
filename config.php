@@ -13,7 +13,7 @@
  */
 
 return [
-    'handle' => \Handle::class,
-    'monitor' => \Monitor::class,
+    'handle' => null,
+    'monitor' => null,
     'server' => \FastD\Swoole\Server\TcpServer::class,
 ];
