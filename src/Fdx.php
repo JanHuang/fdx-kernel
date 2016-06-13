@@ -53,7 +53,7 @@ class Fdx
     {
         $serverScript = static::getInstance();
 
-        $config = $classLoader->getPrefixesPsr4()['Fdx\\'][0] . '/../config.php';
+        $config  = getcwd() . '/config.php';
 
         if (!file_exists($config)) {
             throw new \RuntimeException(sprintf('Config file is not exists.'));
