@@ -74,11 +74,14 @@ class FdxCommand extends Command
     {
         $server = $this->handle($this->config);
 
-        $action = $input->getOption('action') ?? 'status';
+        $action = $input->getArgument('action') ?? 'status';
 
-        
+        if ($input->hasOption(['daemonize', 'd'])) {
+            $server->daemonize();
+        }
+
         $service = Service::server($server);
-        
+
         switch ($action) {
             case 'start':
                 $service->start();
