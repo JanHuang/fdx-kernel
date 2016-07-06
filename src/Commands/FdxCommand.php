@@ -62,7 +62,7 @@ class FdxCommand extends Command
      */
     public function getDescription()
     {
-        return "\t<info>fdx 命令 --help 查询操作</info>";
+        return "<info>fdx 命令 --help 查询操作</info>";
     }
 
     /**
@@ -75,7 +75,6 @@ class FdxCommand extends Command
         $server = $this->handle($this->config);
 
         $action = $input->getOption('action') ?? 'status';
-
         
         $service = Service::server($server);
         

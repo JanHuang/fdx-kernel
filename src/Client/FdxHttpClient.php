@@ -1,5 +1,4 @@
 <?php
-
 /**
  *
  * @author    jan huang <bboyjanhuang@gmail.com>
@@ -9,9 +8,9 @@
  * @link      http://www.fast-d.cn/
  */
 
-namespace Fdx;
+namespace Fdx\Client;
 
-class Monitor
+class FdxHttpClient
 {
-    
+
 }

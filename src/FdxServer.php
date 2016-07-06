@@ -25,7 +25,7 @@ use FastD\Console\Input\ArgvInput;
  *
  * @package Fdx
  */
-class Fdx
+class FdxServer
 {
     /**
      * @var static

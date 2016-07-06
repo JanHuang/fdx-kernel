@@ -8,15 +8,9 @@
  * @link      http://www.fast-d.cn/
  */
 
-namespace Fdx\Server;
+namespace Fdx\Client;
 
-use FastD\Swoole\Server\Server;
-
-/**
- * Class FdxServer
- *
- * @package Fdx\Server
- */
-abstract class FdxServer extends Server
+class FdxClient extends \FastD\Swoole\Client\Client
 {
+
 }
