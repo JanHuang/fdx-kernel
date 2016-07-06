@@ -10,7 +10,18 @@
 
 namespace Fdx\Client;
 
-class FdxClient extends \FastD\Swoole\Client\Client
-{
+use FastD\Packet\Binary;
+use FastD\Swoole\Client\Client;
 
+class FdxClient extends Client
+{
+    public function call($name, array $arguments = [])
+    {
+        $result = $this->send(Binary::encode([
+            'name' => $name,
+            'params' => $arguments
+        ]));
+
+        return Binary::decode($result);
+    }
 }

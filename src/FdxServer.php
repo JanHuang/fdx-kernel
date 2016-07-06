@@ -14,69 +14,85 @@
 
 namespace Fdx;
 
-use Composer\Autoload\ClassLoader;
-use FastD\Console\Console;
-use FastD\Debug\Debug;
-use Fdx\Commands\FdxCommand;
-use FastD\Console\Input\ArgvInput;
+use FastD\Packet\Binary;
+use FastD\Swoole\Server\Server;
 
 /**
  * Class Fdx
  *
- * @package Fdx
+ * @package FdxServer
  */
-class FdxServer
+class FdxServer extends Server
 {
     /**
-     * @var static
+     * Api list.
+     *
+     * @var array
      */
-    protected static $instance;
+    protected $apiList = [];
 
     /**
-     * @return static
+     * @param $name
+     * @param callable $callback
+     * @return $this
      */
-    protected static function getInstance()
+    public function addFunction($name, callable $callback)
     {
-        if (null === static::$instance) {
-            static::$instance = new static();
-            Debug::enable();
-        }
+        $this->apiList[$name] = $callback;
 
-        return static::$instance;
+        return $this;
     }
 
     /**
-     * @param ClassLoader $classLoader
-     * @return int
+     * @param $name
+     * @return mixed
      */
-    public static function run(ClassLoader $classLoader)
+    public function getFunction($name)
     {
-        $serverScript = static::getInstance();
-
-        $config = $classLoader->getPrefixesPsr4()['Fdx\\'][0] . '/../config.php';
-
-        if (!file_exists($config)) {
-            throw new \RuntimeException(sprintf('Config file is not exists.'));
+        if (!isset($this->apiList[$name])) {
+            throw new \InvalidArgumentException(sprintf('"%s" is cannot found.', $name));
         }
 
-        // include config to array.
-        $config = include $config;
-
-        return $serverScript->runCommand($config);
+        return $this->apiList[$name];
     }
 
     /**
-     * @param array $config
-     * @return int
+     * @param $name
+     * @param array $parameters
+     * @return mixed
      */
-    public function runCommand(array $config)
+    public function dispatch($name, array $parameters = [])
     {
-        $input = new ArgvInput();
+        $function = $this->getFunction($name);
 
-        $consoleApp = new Console();
+        return call_user_func_array($function, $parameters);
+    }
 
-        $consoleApp->addCommand(new FdxCommand($config));
+    /**
+     * @param \swoole_server $server
+     * @param int $fd
+     * @param int $from_id
+     * @param string $data
+     * @return mixed
+     */
+    public function doWork(\swoole_server $server, int $fd, int $from_id, string $data)
+    {
+        $data = Binary::decode($data);
 
-        return $consoleApp->run($input);
+        $data = $this->dispatch($data['name'], $data['params']);
+
+        $server->send($fd, Binary::encode($data));
+
+        $server->close($fd);
+    }
+
+    /**
+     * @param \swoole_server $server
+     * @param string $data
+     * @param array $client_info
+     */
+    public function doPacket(\swoole_server $server, string $data, array $client_info)
+    {
+        // TODO: Implement doPacket() method.
     }
 }

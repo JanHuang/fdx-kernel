@@ -10,7 +10,7 @@
 
 namespace Fdx\Client;
 
-class FdxHttpClient
+class FdxHttpClient extends FdxClient
 {
 
 }

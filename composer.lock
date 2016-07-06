@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "22fc3b91f4088390d964657a6fa80bc1",
-    "content-hash": "6b1e40dd8cb09c1f09dec83099550081",
+    "hash": "38ee83c5526eb3d9216453f334b901f2",
+    "content-hash": "c29e213e546a809a44c1ab8bc7cee941",
     "packages": [
         {
             "name": "fastd/console",
@@ -152,16 +152,16 @@
         },
         {
             "name": "fastd/swoole",
-            "version": "v2.0.0-beta1",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/JanHuang/swoole.git",
-                "reference": "9369f5816f0dd3edddcc76d1cd9d400acb9fecf2"
+                "reference": "60afb3d011f4fd3e111ffbf0b2dc296c241edefb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/JanHuang/swoole/zipball/9369f5816f0dd3edddcc76d1cd9d400acb9fecf2",
-                "reference": "9369f5816f0dd3edddcc76d1cd9d400acb9fecf2",
+                "url": "https://api.github.com/repos/JanHuang/swoole/zipball/60afb3d011f4fd3e111ffbf0b2dc296c241edefb",
+                "reference": "60afb3d011f4fd3e111ffbf0b2dc296c241edefb",
                 "shasum": ""
             },
             "require": {
@@ -199,7 +199,7 @@
                 }
             ],
             "description": "FastD swoole.",
-            "time": "2016-06-10 18:59:39"
+            "time": "2016-07-06 03:18:40"
         },
         {
             "name": "maximebf/debugbar",
@@ -264,16 +264,16 @@
         },
         {
             "name": "monolog/monolog",
-            "version": "1.19.0",
+            "version": "1.20.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Seldaek/monolog.git",
-                "reference": "5f56ed5212dc509c8dc8caeba2715732abb32dbf"
+                "reference": "55841909e2bcde01b5318c35f2b74f8ecc86e037"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Seldaek/monolog/zipball/5f56ed5212dc509c8dc8caeba2715732abb32dbf",
-                "reference": "5f56ed5212dc509c8dc8caeba2715732abb32dbf",
+                "url": "https://api.github.com/repos/Seldaek/monolog/zipball/55841909e2bcde01b5318c35f2b74f8ecc86e037",
+                "reference": "55841909e2bcde01b5318c35f2b74f8ecc86e037",
                 "shasum": ""
             },
             "require": {
@@ -292,8 +292,8 @@
                 "php-console/php-console": "^3.1.3",
                 "phpunit/phpunit": "~4.5",
                 "phpunit/phpunit-mock-objects": "2.3.0",
-                "raven/raven": "^0.13",
                 "ruflin/elastica": ">=0.90 <3.0",
+                "sentry/sentry": "^0.13",
                 "swiftmailer/swiftmailer": "~5.3"
             },
             "suggest": {
@@ -305,9 +305,9 @@
                 "mongodb/mongodb": "Allow sending log messages to a MongoDB server via PHP Driver",
                 "php-amqplib/php-amqplib": "Allow sending log messages to an AMQP server using php-amqplib",
                 "php-console/php-console": "Allow sending log messages to Google Chrome",
-                "raven/raven": "Allow sending log messages to a Sentry server",
                 "rollbar/rollbar": "Allow sending log messages to Rollbar",
-                "ruflin/elastica": "Allow sending log messages to an Elastic Search server"
+                "ruflin/elastica": "Allow sending log messages to an Elastic Search server",
+                "sentry/sentry": "Allow sending log messages to a Sentry server"
             },
             "type": "library",
             "extra": {
@@ -338,7 +338,7 @@
                 "logging",
                 "psr-3"
             ],
-            "time": "2016-04-12 18:29:35"
+            "time": "2016-07-02 14:02:10"
         },
         {
             "name": "psr/log",
@@ -380,16 +380,16 @@
         },
         {
             "name": "symfony/finder",
-            "version": "v3.1.1",
+            "version": "v3.1.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/finder.git",
-                "reference": "40d17ed287bf51a2f884c4619ce8ff2a1c5cd219"
+                "reference": "8201978de88a9fa0923e18601bb17f1df9c721e7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/finder/zipball/40d17ed287bf51a2f884c4619ce8ff2a1c5cd219",
-                "reference": "40d17ed287bf51a2f884c4619ce8ff2a1c5cd219",
+                "url": "https://api.github.com/repos/symfony/finder/zipball/8201978de88a9fa0923e18601bb17f1df9c721e7",
+                "reference": "8201978de88a9fa0923e18601bb17f1df9c721e7",
                 "shasum": ""
             },
             "require": {
@@ -425,7 +425,7 @@
             ],
             "description": "Symfony Finder Component",
             "homepage": "https://symfony.com",
-            "time": "2016-05-13 18:06:41"
+            "time": "2016-06-29 05:41:56"
         },
         {
             "name": "symfony/polyfill-mbstring",
@@ -488,16 +488,16 @@
         },
         {
             "name": "symfony/var-dumper",
-            "version": "v3.1.1",
+            "version": "v3.1.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/var-dumper.git",
-                "reference": "436195b421e8c0493ca3e390c1fbecd8ee08c546"
+                "reference": "39492b8b8fe514163e677bf154fd80f6cc995759"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/var-dumper/zipball/436195b421e8c0493ca3e390c1fbecd8ee08c546",
-                "reference": "436195b421e8c0493ca3e390c1fbecd8ee08c546",
+                "url": "https://api.github.com/repos/symfony/var-dumper/zipball/39492b8b8fe514163e677bf154fd80f6cc995759",
+                "reference": "39492b8b8fe514163e677bf154fd80f6cc995759",
                 "shasum": ""
             },
             "require": {
@@ -547,7 +547,7 @@
                 "debug",
                 "dump"
             ],
-            "time": "2016-05-24 10:06:56"
+            "time": "2016-06-29 05:41:56"
         }
     ],
     "packages-dev": [
@@ -1690,16 +1690,16 @@
         },
         {
             "name": "symfony/yaml",
-            "version": "v3.1.1",
+            "version": "v3.1.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/yaml.git",
-                "reference": "c5a7e7fc273c758b92b85dcb9c46149ccda89623"
+                "reference": "2884c26ce4c1d61aebf423a8b912950fe7c764de"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/yaml/zipball/c5a7e7fc273c758b92b85dcb9c46149ccda89623",
-                "reference": "c5a7e7fc273c758b92b85dcb9c46149ccda89623",
+                "url": "https://api.github.com/repos/symfony/yaml/zipball/2884c26ce4c1d61aebf423a8b912950fe7c764de",
+                "reference": "2884c26ce4c1d61aebf423a8b912950fe7c764de",
                 "shasum": ""
             },
             "require": {
@@ -1735,7 +1735,7 @@
             ],
             "description": "Symfony Yaml Component",
             "homepage": "https://symfony.com",
-            "time": "2016-06-14 11:18:07"
+            "time": "2016-06-29 05:41:56"
         },
         {
             "name": "webmozart/assert",
@@ -1790,7 +1790,7 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "fastd/swoole": 10
+        "fastd/swoole": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,
