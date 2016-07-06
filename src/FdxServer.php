@@ -18,9 +18,9 @@ use FastD\Packet\Binary;
 use FastD\Swoole\Server\Server;
 
 /**
- * Class Fdx
+ * Class FdxServer
  *
- * @package FdxServer
+ * @package Fdx
  */
 class FdxServer extends Server
 {
@@ -30,7 +30,7 @@ class FdxServer extends Server
      * @var array
      */
     protected $apiList = [];
-
+    
     /**
      * @param $name
      * @param callable $callback

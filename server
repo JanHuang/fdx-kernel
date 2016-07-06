@@ -37,6 +37,12 @@ $composer = include COMPOSER_INSTALL;
  * Bootstrap server.
  *
  */
-use Fdx\Fdx;
+use FastD\Console\Console;
+use FastD\Console\Input\ArgvInput;
 
-Fdx::run($composer);
+$input = new ArgvInput();
+$console = new Console();
+
+$console->addCommand(new \Fdx\FdxConsole());
+
+$console->run($input);

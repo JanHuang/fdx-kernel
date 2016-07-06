@@ -10,12 +10,11 @@
 
 include __DIR__ . '/../vendor/autoload.php';
 
-use Fdx\Client\FdxClient;
+use Fdx\FdxClient;
 
-$client = new FdxClient();
+$client = new FdxClient('tcp://127.0.0.1:9527');
 
-$client->connect('127.0.0.1', '9527');
-
-$result = $client->call('hello');
+$result = $client->hello('hello');
+// $result = $client->call('hello', ['hell']);
 
 var_dump($result);
