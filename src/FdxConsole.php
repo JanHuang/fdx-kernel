@@ -50,7 +50,7 @@ class FdxConsole extends Command
             ->setOption('host', '-h')
             ->setOption('port', '-p')
             ->setOption('conf', '-c')
-            ->setOption('daemon', '-d')
+            ->setOption('daemon', '-d', InputOption::VALUE_NONE)
             ->setOption('dir', null, InputOption::VALUE_OPTIONAL, '', './src')
         ;
     }
@@ -62,8 +62,6 @@ class FdxConsole extends Command
      */
     public function execute(Input $input, Output $output)
     {
-        $config = [];
-
         if (null !== $input->getOption('conf')) {
             $conf = $input->getOption('conf');
             switch (pathinfo($conf, PATHINFO_EXTENSION)) {
@@ -73,6 +71,20 @@ class FdxConsole extends Command
                 default:
                     $config = include $conf;
             }
+        } else {
+            $config = parse_ini_file('./server.ini');
+        }
+        
+        if ($input->hasOption('daemon')) {
+            $config['daemonize'] = true;
+        }
+
+        if ($input->hasOption('host')) {
+            $config['host'] = $input->getOption('host');
+        }
+
+        if ($input->hasOption('port')) {
+            $config['port'] = $input->getOption('port');
         }
 
         $server = new FdxServer($config);
