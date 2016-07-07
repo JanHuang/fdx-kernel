@@ -9,9 +9,10 @@
  * @link      http://www.fast-d.cn/
  */
 
-namespace Fdx;
-
-class Monitor
+class Demo
 {
-    
+    public function getDemo()
+    {
+        return 'demo';
+    }
 }

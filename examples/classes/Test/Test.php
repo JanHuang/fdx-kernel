@@ -8,15 +8,12 @@
  * @link      http://www.fast-d.cn/
  */
 
-namespace Fdx\Server;
+namespace Test;
 
-use FastD\Swoole\Server\Server;
-
-/**
- * Class FdxServer
- *
- * @package Fdx\Server
- */
-abstract class FdxServer extends Server
+class Test
 {
+    public function testContainer(Test2 $test2)
+    {
+        return $test2->getName();
+    }
 }
