@@ -173,8 +173,6 @@ class FdxServer extends Server
         $data = $this->dispatch($data['name'], $data['params']);
 
         $server->send($fd, Binary::encode($data));
-
-        $server->close($fd);
     }
 
     /**
