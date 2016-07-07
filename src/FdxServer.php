@@ -14,8 +14,11 @@
 
 namespace Fdx;
 
+use FastD\Container\Container;
 use FastD\Packet\Binary;
 use FastD\Swoole\Server\Server;
+use RecursiveDirectoryIterator;
+use RecursiveIteratorIterator;
 
 /**
  * Class FdxServer
@@ -25,18 +28,98 @@ use FastD\Swoole\Server\Server;
 class FdxServer extends Server
 {
     /**
+     * @var Container
+     */
+    protected $container;
+
+    /**
+     * FdxServer constructor.
+     *
+     * @param array $config
+     */
+    public function __construct(array $config)
+    {
+        parent::__construct($config);
+
+        $this->container = new Container();
+    }
+
+    /**
      * Api list.
      *
      * @var array
      */
     protected $apiList = [];
-    
+
+    /**
+     * @param $directory
+     */
+    public function scanDir($directory)
+    {
+        $showFiles = function ($dir) use (&$showFiles) {
+            $files = [];
+
+            $dir = new RecursiveIteratorIterator(new RecursiveDirectoryIterator($dir));
+
+            for (; $dir->valid(); $dir->next()) {
+                if ($dir->isDir() && !$dir->isDot()) {
+                    if ($dir->hasChildren()) {
+                        $files = array_merge($files, $showFiles($dir->getChildren()));
+                    };
+                } else if ($dir->isFile()) {
+                    $files[] = $dir->getFileInfo();
+                }
+            }
+
+            return $files;
+        };
+
+        $directory = realpath($directory);
+
+        $files = $showFiles($directory);
+
+        $isUpper = function ($str) {
+            $str = ord($str);
+            if ($str > 64 && $str < 91) {
+                return true;
+            }
+
+            return false;
+        };
+
+        foreach ($files as $file) {
+
+            include_once $file->getRealPath();
+
+            if ($isUpper($file->getFilename(){0})) {
+                $namespace = str_replace($directory, '', $file->getPath());
+                $namespace = empty($namespace) ? '\\' : str_replace('/', '\\', $namespace);
+                $className = str_replace('\\\\', '\\', $namespace . '\\' . pathinfo($file->getFilename(), PATHINFO_FILENAME));
+                if (!class_exists($className)) {
+                    continue;
+                }
+
+                $reflection = new \ReflectionClass($className);
+                $name = strtolower($reflection->getShortName());
+                $this->container->set($name, $className);
+                $service = $this->container->get($name);
+                foreach ($reflection->getMethods(\ReflectionMethod::IS_PUBLIC) as $method) {
+                    $this->addFunction($name . '.' . $method->getName(), [$service, $method->getShortName()]);
+                }
+                
+            } else {
+                $name = pathinfo($file->getFilename(), PATHINFO_FILENAME);
+                $this->addFunction($name, $name);
+            }
+        }
+    }
+
     /**
      * @param $name
      * @param callable $callback
      * @return $this
      */
-    public function addFunction($name, callable $callback)
+    public function addFunction($name, $callback)
     {
         $this->apiList[$name] = $callback;
 
@@ -56,6 +139,14 @@ class FdxServer extends Server
         return $this->apiList[$name];
     }
 
+    /**
+     * @return array
+     */
+    public function getFunctions()
+    {
+        return $this->apiList;
+    }
+    
     /**
      * @param $name
      * @param array $parameters

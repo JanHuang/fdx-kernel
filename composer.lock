@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "38ee83c5526eb3d9216453f334b901f2",
-    "content-hash": "c29e213e546a809a44c1ab8bc7cee941",
+    "hash": "bf71f74c7f27c491102f045e978ac3ac",
+    "content-hash": "58527e05e14c5da13807b3682ca3d358",
     "packages": [
         {
             "name": "fastd/console",
@@ -56,6 +56,54 @@
                 "console"
             ],
             "time": "2016-06-27 02:49:42"
+        },
+        {
+            "name": "fastd/container",
+            "version": "v2.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/JanHuang/container.git",
+                "reference": "e7a0f4f2aafb6eae71d654d420df59b828fecc7f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/JanHuang/container/zipball/e7a0f4f2aafb6eae71d654d420df59b828fecc7f",
+                "reference": "e7a0f4f2aafb6eae71d654d420df59b828fecc7f",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "5.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "FastD\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "janhuang",
+                    "email": "bboyjanhuang@gmail.com"
+                }
+            ],
+            "description": "FastD container component",
+            "keywords": [
+                "FastD",
+                "container"
+            ],
+            "time": "2016-05-11 14:35:16"
         },
         {
             "name": "fastd/debug",

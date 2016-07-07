@@ -13,9 +13,15 @@ namespace Fdx;
 use FastD\Console\Command\Command;
 use FastD\Console\Input\Input;
 use FastD\Console\Input\InputArgument;
+use FastD\Console\Input\InputOption;
 use FastD\Console\Output\Output;
 use FastD\Swoole\Console\Service;
 
+/**
+ * Class FdxConsole
+ *
+ * @package Fdx
+ */
 class FdxConsole extends Command
 {
     /**
@@ -45,6 +51,7 @@ class FdxConsole extends Command
             ->setOption('port', '-p')
             ->setOption('conf', '-c')
             ->setOption('daemon', '-d')
+            ->setOption('dir', null, InputOption::VALUE_OPTIONAL, '', './src')
         ;
     }
 
@@ -61,7 +68,7 @@ class FdxConsole extends Command
             $conf = $input->getOption('conf');
             switch (pathinfo($conf, PATHINFO_EXTENSION)) {
                 case 'ini':
-                    $config = parse_ini_file($conf);
+                    $config = parse_ini_file($conf, true);
                     break;
                 default:
                     $config = include $conf;
@@ -69,6 +76,10 @@ class FdxConsole extends Command
         }
 
         $server = new FdxServer($config);
+
+        $dir = $input->getOption('dir');
+
+        $server->scanDir($dir);
 
         $service = Service::server($server);
 
@@ -87,6 +98,9 @@ class FdxConsole extends Command
                 break;
             case 'watch':
                 $service->watch(['.']);
+                break;
+            case 'dump':
+                print_r(array_keys($server->getFunctions()));
                 break;
             default:
                 echo "php server {start|stop|status|reload|watch}";

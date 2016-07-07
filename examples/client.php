@@ -14,7 +14,7 @@ use Fdx\FdxClient;
 
 $client = new FdxClient('tcp://127.0.0.1:9527');
 
-$result = $client->hello('hello');
+$result = $client->call('test.testContainer');
 // $result = $client->call('hello', ['hell']);
 
 var_dump($result);
