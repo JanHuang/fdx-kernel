@@ -12,7 +12,7 @@ include __DIR__ . '/../vendor/autoload.php';
 
 use Fdx\FdxServer;
 
-$server = new FdxServer();
+$server = new FdxServer([]);
 
 $server->addFunction('hello', function () {
     return 'hello';
