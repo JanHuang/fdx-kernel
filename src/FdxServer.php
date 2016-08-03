@@ -16,7 +16,8 @@ namespace Fdx;
 
 use FastD\Container\Container;
 use FastD\Packet\Binary;
-use FastD\Swoole\Server\Server;
+use FastD\Swoole\Request;
+use FastD\Swoole\Server;
 use RecursiveDirectoryIterator;
 use RecursiveIteratorIterator;
 
@@ -160,13 +161,10 @@ class FdxServer extends Server
     }
 
     /**
-     * @param \swoole_server $server
-     * @param int $fd
-     * @param int $from_id
-     * @param string $data
-     * @return mixed
+     * @param Request $request
+     * @return string
      */
-    public function doWork(\swoole_server $server, int $fd, int $from_id, string $data)
+    public function doWork(Request $request)
     {
         $data = Binary::decode($data);
 
@@ -176,11 +174,10 @@ class FdxServer extends Server
     }
 
     /**
-     * @param \swoole_server $server
-     * @param string $data
-     * @param array $client_info
+     * @param Request $request
+     * @return string
      */
-    public function doPacket(\swoole_server $server, string $data, array $client_info)
+    public function doPacket(Request $request)
     {
         // TODO: Implement doPacket() method.
     }
